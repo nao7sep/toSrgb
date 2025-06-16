@@ -1,7 +1,7 @@
 namespace toSrgbApp
 {
     /// <summary>
-    /// Parses command line arguments for the toSrgb application.
+    /// Parses command line arguments for the toSrgbApp application.
     /// </summary>
     public class CommandLineOptions
     {

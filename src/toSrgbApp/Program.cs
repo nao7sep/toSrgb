@@ -39,7 +39,7 @@ namespace toSrgbApp
 
                 if (options.ImagePaths.Count == 0)
                 {
-                    Console.WriteLine("Usage: toSrgb --quality NN <image1> [image2 ...]");
+                    Console.WriteLine("Usage: toSrgbApp --quality NN <image1> [image2 ...]");
                     return;
                 }
 
