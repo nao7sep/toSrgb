@@ -89,6 +89,7 @@ When `--quality` is not specified, the application prompts for quality selection
 - **c - Compact (Quality 75)**: Smaller file size, metadata stripped
 - **b - Balanced (Quality 85)**: Balanced size/quality, metadata stripped
 - **d - Detailed (Quality 95)**: High quality, metadata preserved
+- Interactive quality selection uses color-coded console output for clarity.
 
 ### 3.2 Image Processing Workflow
 
@@ -109,6 +110,7 @@ When `--quality` is not specified, the application prompts for quality selection
 - **Pattern Recognition**: Detect timestamp-prefixed filenames matching `YYYYMMDD-HHMMSS (basename).ext`
 - **Filename Cleaning**: Extract clean basename from timestamped filenames
 - **Fallback**: Use original filename if pattern doesn't match
+- **Overwrite Risk**: If multiple input files resolve to the same cleaned filename, the last processed file will overwrite previous ones in the output directory. Users should ensure unique input filenames to avoid accidental overwrites.
 
 ### 3.3 Output Management
 
@@ -146,6 +148,7 @@ The application's quality presets are based on analysis of JPEG quality from var
 - Individual file processing errors don't terminate the application
 - Error messages displayed in red console text
 - Processing continues with remaining files
+- File-level errors are caught and reported per file, with processing continuing for remaining files.
 
 ### 5.2 Application-Level Errors
 - Global exception handling with user-friendly error messages
@@ -193,6 +196,7 @@ The application's quality presets are based on analysis of JPEG quality from var
 
 ### 8.1 Memory Management
 - Uses `using` statements for proper MagickImage disposal
+- All image resources are disposed of immediately after processing using `using` statements, preventing memory leaks.
 - Processes images individually to minimize memory footprint
 - No concurrent processing (sequential batch processing)
 
