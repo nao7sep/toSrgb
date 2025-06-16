@@ -1,4 +1,4 @@
-namespace toSrgb
+namespace toSrgbApp
 {
     /// <summary>
     /// Handles interactive console input for selecting JPEG quality.

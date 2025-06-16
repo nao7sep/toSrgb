@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 using ImageMagick;
 
-namespace toSrgb
+namespace toSrgbApp
 {
     class Program
     {

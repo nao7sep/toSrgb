@@ -1,4 +1,4 @@
-namespace toSrgb
+namespace toSrgbApp
 {
     /// <summary>
     /// Parses command line arguments for the toSrgb application.
