@@ -2,13 +2,13 @@
 
 ## 1. Product Overview
 
-**Product Name:** toSrgb
-**Version:** v0.1
-**Type:** Console Application
-**Platform:** .NET 9.0
-**License:** GPL-3.0
-**Author:** nao7sep
-**Company:** Purrfect Code
+- **Product Name:** toSrgb
+- **Version:** v0.1
+- **Type:** Console Application
+- **Platform:** .NET 9.0
+- **License:** GPL-3.0
+- **Author:** nao7sep
+- **Company:** Purrfect Code
 
 ### 1.1 Purpose
 toSrgb is a command-line utility designed to convert JPEG images from Adobe RGB color space to sRGB color space while providing intelligent JPEG quality selection based on practical use cases.
@@ -36,7 +36,7 @@ src/toSrgbApp/
 ├── CommandLineOptions.cs   # Command-line argument parser
 ├── ImageConverter.cs       # Core image processing logic
 ├── JpegQualitySelector.cs  # Interactive quality selection
-└── toSrgbApp.csproj       # Project configuration
+└── toSrgbApp.csproj        # Project configuration
 ```
 
 ### 2.3 Core Classes
