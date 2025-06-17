@@ -39,8 +39,13 @@ namespace toSrgbApp
 
                 if (options.ImagePaths.Count == 0)
                 {
-                    Console.WriteLine("Usage: toSrgbApp --quality NN <image1> [image2 ...]");
+                    Console.WriteLine("Usage: toSrgbApp [--resize o|8|16|32] [--quality NN] <image1> [image2 ...]");
                     return;
+                }
+
+                while (!options.ResizeMode.HasValue)
+                {
+                    options.ResizeMode = ImageResizeSelector.PromptForResizeMode();
                 }
 
                 while (!options.JpegQuality.HasValue)
@@ -51,8 +56,9 @@ namespace toSrgbApp
                 // Prepare output directory path, but do not create yet
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
                 string timestamp = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                string resizePart = options.ResizeMode.Value == ImageResizeSelector.ResizeMode.Original ? "original" : $"resize-{ImageResizeSelector.GetBoxSize(options.ResizeMode.Value)?.width}x{ImageResizeSelector.GetBoxSize(options.ResizeMode.Value)?.height}";
                 string qualityPart = $"quality-{options.JpegQuality.Value}";
-                string outputDir = Path.Combine(desktopPath, $"toSrgb-{timestamp}-{qualityPart}");
+                string outputDir = Path.Combine(desktopPath, $"toSrgb-{timestamp}-{resizePart}-{qualityPart}");
 
                 foreach (var inputPath in options.ImagePaths)
                 {
@@ -92,6 +98,7 @@ namespace toSrgbApp
                         using var image = new MagickImage(inputPath);
                         bool stripMetadata = options.JpegQuality.Value != 95;
                         ImageConverter.ConvertToSrgb(image, stripMetadata: stripMetadata);
+                        ImageConverter.ResizeImage(image, options.ResizeMode.Value); // Resize if needed
                         Directory.CreateDirectory(outputDir);
                         ImageConverter.SaveAsJpeg(image, outputPath, options.JpegQuality.Value);
 

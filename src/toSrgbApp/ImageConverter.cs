@@ -61,5 +61,24 @@ namespace toSrgbApp
             // Write the image to disk in JPEG format
             image.Write(outputPath, MagickFormat.Jpeg);
         }
+
+        /// <summary>
+        /// Optionally resizes the image to fit within the specified box size.
+        /// </summary>
+        /// <param name="image">The MagickImage to resize.</param>
+        /// <param name="resizeMode">The resize mode to use.</param>
+        public static void ResizeImage(MagickImage image, ImageResizeSelector.ResizeMode resizeMode)
+        {
+            var box = ImageResizeSelector.GetBoxSize(resizeMode);
+            if (box.HasValue)
+            {
+                uint maxWidth = (uint)box.Value.width;
+                uint maxHeight = (uint)box.Value.height;
+                if (image.Width > maxWidth || image.Height > maxHeight)
+                {
+                    image.Resize(new MagickGeometry(maxWidth, maxHeight) { IgnoreAspectRatio = false });
+                }
+            }
+        }
     }
 }
