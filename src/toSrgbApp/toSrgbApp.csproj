@@ -9,7 +9,7 @@
         <!-- Project Metadata -->
         <AssemblyTitle>toSrgbApp</AssemblyTitle>
         <Product>toSrgb</Product>
-        <Description>A user-friendly tool for converting JPEG images to sRGB with quality presets, filename cleaning, and organized output.</Description>
+        <Description>A user-friendly tool for converting JPEG images to sRGB with quality presets, flexible resizing, batch processing, filename cleaning, and organized output. Supports interactive and command-line options.</Description>
         <Company>Purrfect Code</Company>
         <Authors>nao7sep</Authors>
         <Copyright>Copyright © 2025</Copyright>
